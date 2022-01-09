@@ -2,7 +2,7 @@
 Movie app with React Apollo GraphQL
 
 ## set up
-npm i styled-components react-router-dom@5.3.0 @apollo/client graphql
+npm i styled-components react-router-dom @apollo/client graphql
 
 # Getting Started with Create React App
 
