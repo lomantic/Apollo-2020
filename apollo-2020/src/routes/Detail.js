@@ -1,15 +1,22 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from '@apollo/client';
+import Suggestion from "../components/Suggestion";
 
 const GET_MOVIE = gql`
         query getMovieById($id: Int!){
             MovieById(id: $id){
+                id
                 title
                 language
                 rating
                 medium_cover_image
                 description_intro
+            }
+            Suggestions(id: $id){
+                id
+                title
+                medium_cover_image
             }
         }
 `
@@ -40,6 +47,16 @@ function Detail() {
                     <div>
                         {`Summary : ${data.MovieById.description_intro}`}
                     </div>
+
+                    <div>Suggestions</div>
+                    {data.Suggestions.map((suggestion) => 
+                        <Suggestion 
+                            key={suggestion.id}
+                            id={suggestion.id}
+                            title={suggestion.title}
+                            poster={suggestion.medium_cover_image}
+                        /> 
+                    )}
                 </div> 
             : 
                 ("Data fetch Error")
